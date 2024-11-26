@@ -39,7 +39,7 @@ const CartItem = ({ onContinueShopping }) => {
     };
 
     const handleCheckoutShopping = (e) => { //Funcion para el futuro
-      alert('Functionality to be added for future reference');
+      alert('Proximamente...');
     };
 
   return (
