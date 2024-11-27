@@ -145,3 +145,28 @@
     width: 90%; /* Adjust as needed */
   }
 }
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px; /* Desde abajo */
+  right: 20px; /* Desde la derecha */
+  background-color: #4CAF50; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 50%; /* Forma circular */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+  z-index: 1000; /* Por encima de otros elementos */
+}
+
+.back-to-top:hover {
+  background-color: #45a049; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.1); /* Efecto de agrandamiento */
+}
+

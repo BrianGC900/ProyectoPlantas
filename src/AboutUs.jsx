@@ -7,7 +7,7 @@ function AboutUs() {
       {/* <h1 className="about-us-heading">About Us</h1> */}
       <p className="about-us-description">¡Bienvenido a Paraiso Vivero, donde el verde se combina con la serenidad!</p>
       <p className="about-us-content">
-      En Paradise Nursery, nos apasiona acercarte la naturaleza. Nuestra misión es proporcionar una amplia gama de plantas de alta calidad que no solo realcen la belleza de tu entorno, sino que también contribuyan a un estilo de vida más saludable y sostenible. Desde plantas que purifican el aire hasta plantas aromáticas y fragantes, tenemos algo para todos los amantes de las plantas.
+      En Paraiso Vivero, nos apasiona acercarte la naturaleza. Nuestra misión es proporcionar una amplia gama de plantas de alta calidad que no solo realcen la belleza de tu entorno, sino que también contribuyan a un estilo de vida más saludable y sostenible. Desde plantas que purifican el aire hasta plantas aromáticas y fragantes, tenemos algo para todos los amantes de las plantas.
       </p>
       {/* <p className="plant_logo_left"><img src="https://p1.hiclipart.com/preview/922/979/640/green-leaf-logo-emoji-seedling-emoticon-sticker-plant-plant-stem-flower-png-clipart-thumbnail.jpg" height='50px' width='50px' alt="" /></p> */}
       <p className="about-us-content">

@@ -19,7 +19,7 @@ function ProductList() {
 
     const plantsArray = [
         {
-            category: "Plantas purificadoras de aire",
+            category: "Purificadoras de aire",
             plants: [
                 {
                     name: "Planta de serpiente",
@@ -60,7 +60,7 @@ function ProductList() {
             ]
         },
         {
-            category: "Plantas aromáticas fragantes",
+            category: "Aromáticas fragantes",
             plants: [
                 {
                     name: "Lavanda",
@@ -101,7 +101,7 @@ function ProductList() {
             ]
         },
         {
-            category: "Plantas repelentes de insectos",
+            category: "Repelentes de insectos",
             plants: [
                 {
                     name: "oregano",
@@ -142,7 +142,7 @@ function ProductList() {
             ]
         },
         {
-            category: "Plantas medicinales",
+            category: "Medicinales",
             plants: [
                 {
                     name: "Aloe Vera",
@@ -183,7 +183,7 @@ function ProductList() {
             ]
         },
         {
-            category: "Plantas de bajo mantenimiento",
+            category: "Bajo mantenimiento",
             plants: [
                 {
                     name: "Planta ZZ",
@@ -248,19 +248,27 @@ function ProductList() {
    const handleCartClick = (e) => {
     e.preventDefault();
     setShowCart(true); 
-};
+    };
 
-const handlePlantsClick = (e) => {
-    e.preventDefault();
-    setShowPlants(true); 
-    setShowCart(false); 
-};
+    const handlePlantsClick = (e, categoryName) => {
+        e.preventDefault();
+        setShowPlants(true); 
+        setShowCart(false);
+    
+        // Busca el contenedor de la categoría
+        const element = document.querySelector(`[data-category="${categoryName}"]`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            console.error(`No se encontró la categoría: ${categoryName}`);
+        }
+    };
 
-const handleAddToCart = (plant) => {
-    dispatch(addItem(plant));
-    setAddedToCart((prevState) => ({
-        ...prevState,
-        [plant.name]: true,
+    const handleAddToCart = (plant) => {
+        dispatch(addItem(plant));
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [plant.name]: true,
     }));
 
     // Mostrar notificación
@@ -294,23 +302,16 @@ const handleAddToCart = (plant) => {
               
             </div>
             <div className="navbar">
-                <div>
-                    <a href="#" onClick={(e) => handlePlantsClick(e)} className="navbar-tittle">
-                    Purificadoras
+                {plantsArray.map((category, index) => (
+                    <a
+                        key={index}
+                        href="#"
+                        onClick={(e) => handlePlantsClick(e, category.category)}
+                        className="navbar-tittle"
+                    >
+                        {category.category}
                     </a>
-                    <a href="#" onClick={(e) => handlePlantsClick(e)} className="navbar-tittle">
-                    Aromáticas
-                    </a>
-                    <a href="#" onClick={(e) => handlePlantsClick(e)} className="navbar-tittle">
-                    Repelentes
-                    </a>
-                    <a href="#" onClick={(e) => handlePlantsClick(e)} className="navbar-tittle">
-                    Medicinales
-                    </a>
-                    <a href="#" onClick={(e) => handlePlantsClick(e)} className="navbar-tittle">
-                    Poco Cuidado
-                    </a>
-                </div>
+                ))}
                 <div>
                     <a href="#" onClick={(e) => handleCartClick(e)} className="cart">
                     <svg
@@ -334,13 +335,13 @@ const handleAddToCart = (plant) => {
                     </a>
                     {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
                 </div>
-                </div>
-
+            </div>
         </div>
+        
         {!showCart? (
         <div className="product-grid">
             {plantsArray.map((category,index) => (
-                <div key={index}>
+                <div key={index} data-category={category.category}>
                     <div className="category-container">
                         <h1 className="category-title">{category.category}</h1>
                     </div>
@@ -357,7 +358,6 @@ const handleAddToCart = (plant) => {
                     </div>
                 </div>
             ))}
-
         </div>
  ) :  (
     <CartItem onContinueShopping={handleContinueShopping}/>
